@@ -1,0 +1,76 @@
+# =============================================================================
+# OpenTelemetry Collector — MikroTik Syslog → Parser → Loki (CORRIGIDO)
+# =============================================================================
+
+receivers:
+  syslog:
+    udp:
+      listen_address: "0.0.0.0:1514"
+    tcp:
+      listen_address: "0.0.0.0:1514"
+    protocol: rfc3164
+    operators:
+      - type: regex_parser
+        id: parse_access_forward
+        if: 'body matches "access forward:"'
+        regex: 'access forward: in:(?P<iface_in>\S+) out:(?P<iface_out>\S+), src-mac (?P<src_mac>[0-9a-fA-F:]+), proto (?P<protocol>\S+) \((?P<tcp_flags>[^)]*)\), (?P<src_ip>\d+\.\d+\.\d+\.\d+):(?P<src_port>\d+)->(?P<dst_ip>\d+\.\d+\.\d+\.\d+):(?P<dst_port>\d+), len (?P<pkt_len>\d+)'
+        on_error: send
+
+      - type: regex_parser
+        id: parse_attack_prefix
+        if: 'body matches "\\[LAB-|_atk|\\[PORT-SCAN\\]|\\[SYN-FLOOD\\]|\\[SSH-BLACKLIST\\]|\\[WINBOX-BRUTE\\]"'
+        regex: '(?P<log_prefix>\[[\w-]+\]|_atk|icmp)\s*(?P<details>.*)'
+        on_error: send
+
+      - type: regex_parser
+        id: parse_auth
+        if: 'body matches "logged in|logged out|login failure"'
+        regex: 'user (?P<username>\S+) (?P<auth_event>logged in|logged out|login failure) from (?P<auth_src_ip>\d+\.\d+\.\d+\.\d+) via (?P<auth_service>\w+)'
+        on_error: send
+
+      # CORRIGIDO: add com um atributo por operador (sintaxe correta)
+      - type: add
+        field: attributes.source
+        value: mikrotik
+
+      - type: add
+        field: attributes.collector
+        value: otel
+
+processors:
+  batch:
+    timeout: 2s
+    send_batch_size: 500
+
+  resource:
+    attributes:
+      - key: service.name
+        value: mikrotik-firewall
+        action: upsert
+      - key: host.name
+        value: mikrotik-lab
+        action: upsert
+
+exporters:
+  otlphttp:
+    endpoint: http://loki:3100/otlp
+    tls:
+      insecure: true
+
+  debug:
+    verbosity: detailed
+
+extensions:
+  health_check:
+    endpoint: "0.0.0.0:13133"
+
+service:
+  extensions: [health_check]
+  pipelines:
+    logs:
+      receivers: [syslog]
+      processors: [resource, batch]
+      exporters: [otlphttp, debug]
+  telemetry:
+    logs:
+      level: info

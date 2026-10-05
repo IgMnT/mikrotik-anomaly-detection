@@ -1,0 +1,108 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "title": "Logs por Segundo",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "datasource": { "type": "loki", "uid": "" },
+      "targets": [
+        {
+          "expr": "sum(rate({service_name=\"mikrotik-firewall\"} [1m]))",
+          "legendFormat": "Total"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": { "drawStyle": "line", "fillOpacity": 20 },
+          "color": { "mode": "fixed", "fixedColor": "blue" }
+        }
+      }
+    },
+    {
+      "title": "Logs de Ataque por Segundo",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "datasource": { "type": "loki", "uid": "" },
+      "targets": [
+        {
+          "expr": "sum(rate({service_name=\"mikrotik-firewall\"} |= \"LAB-\" [1m]))",
+          "legendFormat": "Ataques (LAB)"
+        },
+        {
+          "expr": "sum(rate({service_name=\"mikrotik-firewall\"} |= \"_atk\" [1m]))",
+          "legendFormat": "Ataques (_atk)"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": { "drawStyle": "line", "fillOpacity": 20 },
+          "color": { "mode": "palette-classic" }
+        }
+      }
+    },
+    {
+      "title": "Logs de Ataque (Stream)",
+      "type": "logs",
+      "gridPos": { "h": 10, "w": 24, "x": 0, "y": 8 },
+      "datasource": { "type": "loki", "uid": "" },
+      "targets": [
+        {
+          "expr": "{service_name=\"mikrotik-firewall\"} |~ \"LAB-|_atk|PORT-SCAN|SYN-FLOOD|BRUTE|BLACKLIST\"",
+          "maxLines": 500
+        }
+      ]
+    },
+    {
+      "title": "Top IPs de Origem (Ataques)",
+      "type": "table",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 18 },
+      "datasource": { "type": "loki", "uid": "" },
+      "targets": [
+        {
+          "expr": "topk(10, sum by (src_ip) (count_over_time({service_name=\"mikrotik-firewall\"} |~ \"LAB-|_atk\" | regexp \"src[=:](?P<src_ip>\\\\d+\\\\.\\\\d+\\\\.\\\\d+\\\\.\\\\d+)\" [1h])))",
+          "legendFormat": "{{src_ip}}"
+        }
+      ]
+    },
+    {
+      "title": "Distribuição por Protocolo",
+      "type": "piechart",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 18 },
+      "datasource": { "type": "loki", "uid": "" },
+      "targets": [
+        {
+          "expr": "sum by (protocol) (count_over_time({service_name=\"mikrotik-firewall\", protocol=~\".+\"} [1h]))",
+          "legendFormat": "{{protocol}}"
+        }
+      ]
+    },
+    {
+      "title": "Todos os Logs (Stream)",
+      "type": "logs",
+      "gridPos": { "h": 12, "w": 24, "x": 0, "y": 26 },
+      "datasource": { "type": "loki", "uid": "" },
+      "targets": [
+        {
+          "expr": "{service_name=\"mikrotik-firewall\"}",
+          "maxLines": 1000
+        }
+      ]
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 39,
+  "tags": ["mikrotik", "security", "tcc"],
+  "templating": { "list": [] },
+  "time": { "from": "now-1h", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "MikroTik — Security Monitor (TCC)",
+  "uid": "mikrotik-security-tcc",
+  "version": 1
+}

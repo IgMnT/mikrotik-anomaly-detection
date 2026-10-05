@@ -1,0 +1,73 @@
+services:
+
+  # ═══════════════════════════════════════════════
+  # OpenTelemetry Collector
+  # Recebe syslog do MikroTik, parseia, envia pro Loki
+  # ═══════════════════════════════════════════════
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.136.0
+    container_name: otel-collector
+    restart: unless-stopped
+    volumes:
+      - ./otel/otel-config.yaml:/etc/otelcol-contrib/config.yaml:ro
+    ports:
+      # UDP 1514 removido: Docker Desktop/WSL2 não entrega pacotes UDP a
+      # containers, e a porta ficava reservada a nível de VM, bloqueando
+      # o Promtail nativo no WSL2 de bindar nela. MikroTik agora envia
+      # syslog UDP direto para o Promtail (ver PROMTAIL_STATUS.md).
+      - "1514:1514/tcp"    # syslog TCP
+      - "4317:4317"        # OTLP gRPC
+      - "4318:4318"        # OTLP HTTP
+      - "8888:8888"        # métricas do próprio collector
+    depends_on:
+      - loki
+    networks:
+      - observability
+
+  # ═══════════════════════════════════════════════
+  # Grafana Loki
+  # Armazena os logs
+  # ═══════════════════════════════════════════════
+  loki:
+    image: grafana/loki:3.3.2
+    container_name: loki
+    restart: unless-stopped
+    volumes:
+      - ./loki/loki-config.yaml:/etc/loki/local-config.yaml:ro
+      - loki-data:/loki
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - observability
+
+  # ═══════════════════════════════════════════════
+  # Grafana
+  # Visualização e dashboards
+  # ═══════════════════════════════════════════════
+  grafana:
+    image: grafana/grafana:11.4.0
+    container_name: grafana
+    restart: unless-stopped
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    depends_on:
+      - loki
+    networks:
+      - observability
+
+volumes:
+  loki-data:
+  grafana-data:
+
+networks:
+  observability:
+    driver: bridge

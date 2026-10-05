@@ -1,0 +1,185 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "streams",
+    "result": [
+      {
+        "stream": {
+          "detected_level": "informational",
+          "host": "mikrotik-lab",
+          "hostname": "LAB",
+          "job": "mikrotik-firewall",
+          "service_name": "mikrotik-firewall",
+          "severity": "informational"
+        },
+        "values": [
+          [
+            "1789417349000000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac 39:0c:8c:7d:72:47, proto TCP, 10.0.0.139:64798->198.51.100.32:123, len 1170"
+          ],
+          [
+            "1789417348999000000",
+            "access forward: in:bridgeAdm out:bridgeWAN, src-mac 8e:4f:6e:ac:34:2f, proto ICMP, 10.0.0.160:57496->198.51.100.227:443, len 433"
+          ],
+          [
+            "1789417348998000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac 39:0c:8c:7d:72:47, proto UDP, 10.0.0.13:15959->198.51.100.170:443, len 516"
+          ],
+          [
+            "1789417348997000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac 34:2c:d8:10:0f:2f, proto TCP, 10.0.0.73:42684->198.51.100.117:443, len 798"
+          ],
+          [
+            "1789417348996000000",
+            "access forward: in:bridgeAdm out:bridgeWAN, src-mac 8e:4f:6e:ac:34:2f, proto UDP, 10.0.0.173:47018->198.51.100.69:53, len 1340"
+          ],
+          [
+            "1789417348995000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac e5:8e:03:51:d8:ae, proto ICMP, 10.0.0.188:11732->198.51.100.63:123, len 592"
+          ],
+          [
+            "1789417348994000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac 39:0c:8c:7d:72:47, proto ICMP, 10.0.0.144:45890->198.51.100.57:443, len 509"
+          ],
+          [
+            "1789417348993000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac 8e:4f:6e:ac:34:2f, proto TCP, 10.0.0.104:5361->198.51.100.69:80, len 684"
+          ],
+          [
+            "1789417348992000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac 34:2c:d8:10:0f:2f, proto ICMP, 10.0.0.129:59002->198.51.100.102:123, len 582"
+          ],
+          [
+            "1789417348991000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac c2:31:b7:b0:87:16, proto UDP, 10.0.0.192:36346->198.51.100.144:443, len 1237"
+          ],
+          [
+            "1789417348990000000",
+            "access forward: in:bridgeAdm out:bridgeWAN, src-mac 8e:4f:6e:ac:34:2f, proto ICMP, 10.0.0.104:15397->198.51.100.93:80, len 1050"
+          ],
+          [
+            "1789417348989000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac c2:31:b7:b0:87:16, proto UDP, 10.0.0.222:11040->198.51.100.29:80, len 904"
+          ],
+          [
+            "1789417348988000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac 8e:4f:6e:ac:34:2f, proto UDP, 10.0.0.100:40076->198.51.100.98:123, len 554"
+          ],
+          [
+            "1789417348987000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac c2:31:b7:b0:87:16, proto UDP, 10.0.0.176:8531->198.51.100.185:443, len 736"
+          ],
+          [
+            "1789417348986000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac c2:31:b7:b0:87:16, proto TCP, 10.0.0.113:30759->198.51.100.41:53, len 579"
+          ],
+          [
+            "1789417348985000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac c2:31:b7:b0:87:16, proto UDP, 10.0.0.131:7997->198.51.100.234:443, len 1079"
+          ],
+          [
+            "1789417348984000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac 8e:4f:6e:ac:34:2f, proto UDP, 10.0.0.41:50995->198.51.100.96:80, len 1126"
+          ],
+          [
+            "1789417348983000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac 6f:77:0d:65:d6:70, proto ICMP, 10.0.0.84:2300->198.51.100.126:53, len 669"
+          ],
+          [
+            "1789417348982000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac 39:0c:8c:7d:72:47, proto UDP, 10.0.0.63:38206->198.51.100.225:53, len 1035"
+          ],
+          [
+            "1789417348981000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac 8e:4f:6e:ac:34:2f, proto ICMP, 10.0.0.198:9438->198.51.100.33:123, len 378"
+          ],
+          [
+            "1789417348980000000",
+            "access forward: in:bridgeAdm out:bridgeWAN, src-mac 8e:4f:6e:ac:34:2f, proto ICMP, 10.0.0.225:28754->198.51.100.156:80, len 451"
+          ],
+          [
+            "1789417348979000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac e5:8e:03:51:d8:ae, proto TCP, 10.0.0.104:43614->198.51.100.172:443, len 1099"
+          ],
+          [
+            "1789417348978000000",
+            "access forward: in:bridgeAdm out:bridgeWAN, src-mac 39:0c:8c:7d:72:47, proto UDP, 10.0.0.65:5220->198.51.100.58:443, len 1244"
+          ],
+          [
+            "1789417348977000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac c2:31:b7:b0:87:16, proto UDP, 10.0.0.152:1495->198.51.100.57:53, len 1332"
+          ],
+          [
+            "1789417348976000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac 39:0c:8c:7d:72:47, proto UDP, 10.0.0.19:3082->198.51.100.232:443, len 1092"
+          ],
+          [
+            "1789417348975000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac c2:31:b7:b0:87:16, proto TCP, 10.0.0.173:15064->198.51.100.125:80, len 1209"
+          ],
+          [
+            "1789417348974000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac 34:2c:d8:10:0f:2f, proto TCP, 10.0.0.64:32020->198.51.100.201:123, len 233"
+          ],
+          [
+            "1789417348973000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac e5:8e:03:51:d8:ae, proto ICMP, 10.0.0.112:28783->198.51.100.91:123, len 150"
+          ],
+          [
+            "1789417348972000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac e5:8e:03:51:d8:ae, proto ICMP, 10.0.0.253:7473->198.51.100.166:53, len 734"
+          ],
+          [
+            "1789417348971000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac 34:2c:d8:10:0f:2f, proto UDP, 10.0.0.51:36170->198.51.100.49:123, len 904"
+          ],
+          [
+            "1789417348970000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac e5:8e:03:51:d8:ae, proto TCP, 10.0.0.120:58334->198.51.100.64:53, len 1167"
+          ],
+          [
+            "1789417348969000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac 39:0c:8c:7d:72:47, proto UDP, 10.0.0.168:55813->198.51.100.139:53, len 524"
+          ],
+          [
+            "1789417348968000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac 39:0c:8c:7d:72:47, proto TCP, 10.0.0.126:15032->198.51.100.124:123, len 377"
+          ],
+          [
+            "1789417348967000000",
+            "access forward: in:bridgeAdm out:bridgeWAN, src-mac 6f:77:0d:65:d6:70, proto UDP, 10.0.0.254:18404->198.51.100.100:123, len 906"
+          ],
+          [
+            "1789417348966000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac 34:2c:d8:10:0f:2f, proto ICMP, 10.0.0.202:44400->198.51.100.143:123, len 428"
+          ],
+          [
+            "1789417348965000000",
+            "access forward: in:bridgeAdm out:bridgeWAN, src-mac c2:31:b7:b0:87:16, proto UDP, 10.0.0.249:38981->198.51.100.15:53, len 682"
+          ],
+          [
+            "1789417348964000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac 39:0c:8c:7d:72:47, proto UDP, 10.0.0.151:33978->198.51.100.123:80, len 1080"
+          ],
+          [
+            "1789417348963000000",
+            "access forward: in:bridgeWAN out:bridgeAdm, src-mac e5:8e:03:51:d8:ae, proto UDP, 10.0.0.19:5477->198.51.100.153:80, len 285"
+          ],
+          [
+            "1789417348962000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac e5:8e:03:51:d8:ae, proto UDP, 10.0.0.150:3628->198.51.100.153:53, len 1386"
+          ],
+          [
+            "1789417348961000000",
+            "access forward: in:bridgeWAN out:bridgeInfra, src-mac 34:2c:d8:10:0f:2f, proto ICMP, 10.0.0.135:62280->198.51.100.81:443, len 683"
+          ]
+        ]
+      }
+    ],
+    "stats": {
+      "summary": {
+        "note": "dados sint\u00e9ticos de exemplo \u2014 o dataset real n\u00e3o \u00e9 publicado"
+      }
+    }
+  }
+}

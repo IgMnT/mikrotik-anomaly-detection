@@ -1,0 +1,23 @@
+# Dados reais de rede nunca vão para o repositório
+logs_hoje_raw.json
+*.raw.json
+logs_*.json
+!sample_logs.json
+docker-lab/logs/
+
+# Saídas do pipeline de ML: exports, Parquet e modelos contêm IPs e MACs reais
+pipeline/export*/
+pipeline/pq/
+pipeline/modelos/
+pipeline/analise/
+*.parquet
+*.joblib
+*.txt.gz
+pipeline/ataques.csv
+pipeline/ataques_lab.csv
+pipeline/cenarios.json
+pipeline/respostas.md
+pipeline/relatorio*.json
+pipeline/alertas*.json
+saidas_tcc_*.zip
+__pycache__/

@@ -1,0 +1,11 @@
+services:
+  atacante:
+    build: .
+    container_name: lab-atacante-tcc
+    network_mode: host        # usa o IP da máquina host (não cria rede Docker isolada)
+    privileged: true          # necessário para hping3 (raw sockets)
+    stdin_open: true          # mantém o container aberto (modo interativo)
+    tty: true
+    volumes:
+      - ./logs:/lab/logs      # logs dos ataques salvos aqui
+      - ./attack_simulator.sh:/lab/attack_simulator.sh

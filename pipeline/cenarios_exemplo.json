@@ -1,0 +1,59 @@
+[
+ {
+  "arquivo": "ROTEADOR_1_2026-09-22.txt.gz",
+  "tipo": "portscan_lento",
+  "chain": "forward",
+  "origem": "auto:bridgeAdm",
+  "alvo": "auto:bridgeInfra",
+  "portas": "1-1024",
+  "inicio": "auto",
+  "duracao_min": 180,
+  "intervalo_s": [
+   15,
+   45
+  ]
+ },
+ {
+  "arquivo": "ROTEADOR_2_2026-09-21.txt.gz",
+  "tipo": "bruteforce_lento",
+  "chain": "forward",
+  "origem": "auto:bridgeSEC_B",
+  "alvo": "auto:bridgeSEC_C",
+  "porta": 22,
+  "inicio": "10:30",
+  "duracao_min": 120,
+  "intervalo_s": [
+   20,
+   60
+  ]
+ },
+ {
+  "arquivo": "ROTEADOR_1_2026-09-19.txt.gz",
+  "tipo": "scan_distribuido",
+  "chain": "forward",
+  "origens": "auto:bridgeDesenvolvimento",
+  "n_origens": 5,
+  "alvo": "auto:bridgeInfra",
+  "portas": "1-512",
+  "inicio": "auto",
+  "duracao_min": 240,
+  "intervalo_s": [
+   60,
+   180
+  ]
+ },
+ {
+  "arquivo": "ROTEADOR_2_2026-09-23.txt.gz",
+  "tipo": "portscan_lento",
+  "chain": "forward",
+  "origem": "auto:bridgeSEC_C",
+  "alvo": "200.10.20.30",
+  "portas": "1-1024",
+  "inicio": "22:00",
+  "duracao_min": 120,
+  "intervalo_s": [
+   60,
+   120
+  ]
+ }
+]

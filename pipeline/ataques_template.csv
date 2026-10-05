@@ -1,0 +1,3 @@
+start,end,src_ip,dst_ip,regime,origem,tipo
+2026-09-17 10:00:00,2026-09-17 13:00:30,10.0.0.10,10.0.0.1,abaixo,real,portscan_lento
+2026-09-18 15:00:00,2026-09-18 15:02:30,10.0.0.10,10.0.0.1,acima,real,portscan_rapido

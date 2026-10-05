@@ -1,0 +1,5 @@
+datasources:
+  - name: Loki
+    type: loki
+    url: http://loki:3100    # nome do container no docker-compose
+    isDefault: true

@@ -1,0 +1,12 @@
+apiVersion: 1
+
+providers:
+  - name: MikroTik
+    orgId: 1
+    folder: MikroTik
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /var/lib/grafana/dashboards
+      foldersFromFilesStructure: false
